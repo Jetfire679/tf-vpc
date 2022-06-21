@@ -10,6 +10,8 @@ data "aws_ssm_parameter" "rlv-VpcId-east2" {
   provider = aws.east-2
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_vpc_peering_connection" "primary2secondary" {
   # Main VPC ID.
   vpc_id = data.aws_ssm_parameter.rlv-VpcId-east2.value

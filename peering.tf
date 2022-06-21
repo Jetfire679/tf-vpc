@@ -2,9 +2,9 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_vpc_peering_connection" "primary2secondary" {
   # Main VPC ID.
-  vpc_id = module.vpc-east-2.vpc_id
+  vpc_id = module.vpc-east-1.vpc_id
 
-  provider = aws.east-2
+  provider = aws.east-1
 
   # AWS Account ID. This can be dynamically queried using the
   # aws_caller_identity data resource.
@@ -12,12 +12,16 @@ resource "aws_vpc_peering_connection" "primary2secondary" {
   peer_owner_id = data.aws_caller_identity.current.account_id
 
   # Secondary VPC ID.
-  peer_vpc_id = module.vpc-east-1.vpc_id
+  peer_vpc_id = module.vpc-east-2.vpc_id
 
   # Flags that the peering connection should be automatically confirmed. This
   # only works if both VPCs are owned by the same account.
   auto_accept = true
 }
+
+
+
+
 
 resource "aws_route" "primary2secondary" {
   # ID of VPC 1 main route table.
@@ -31,6 +35,10 @@ resource "aws_route" "primary2secondary" {
   # ID of VPC peering connection.
   vpc_peering_connection_id = "${aws_vpc_peering_connection.primary2secondary.id}"
 }
+
+
+
+
 
 resource "aws_route" "secondary2primary" {
   # ID of VPC 2 main route table.

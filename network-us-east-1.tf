@@ -1,10 +1,9 @@
 provider "aws" {
-  version = "~> 1.0.0"
   region  = "us-east-1"
   alias = "east-1"
 }
 
-module "vpc" {
+module "vpc-east-1" {
   source = "terraform-aws-modules/vpc/aws"
   providers = {
     aws = aws.east-1

@@ -16,7 +16,7 @@ resource "aws_vpc_peering_connection" "primary2secondary" {
   # Main VPC ID.
   vpc_id = data.aws_ssm_parameter.rlv-VpcId-east2.value
 
-  provider = aws.east-2
+  provider = aws.east-1
 
   # AWS Account ID. This can be dynamically queried using the
   # aws_caller_identity data resource.

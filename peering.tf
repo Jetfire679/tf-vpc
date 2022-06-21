@@ -1,12 +1,4 @@
-provider "aws" {
-  region  = "us-east-1"
-  alias = "east-1"
-}
 
-provider "aws" {
-  region  = "us-east-2"
-  alias = "east-2"
-}
 
 data "aws_ssm_parameter" "rlv-VpcId-east1" {
   name = "rlv-VpcId"

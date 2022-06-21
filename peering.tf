@@ -16,6 +16,8 @@ resource "aws_vpc_peering_connection" "primary2secondary" {
   # Main VPC ID.
   vpc_id = data.aws_ssm_parameter.rlv-VpcId-east2.value
 
+  provider = aws.east-2
+
   # AWS Account ID. This can be dynamically queried using the
   # aws_caller_identity data resource.
   # https://www.terraform.io/docs/providers/aws/d/caller_identity.html
@@ -33,6 +35,8 @@ resource "aws_route" "primary2secondary" {
   # ID of VPC 1 main route table.
   route_table_id = module.vpc-east-1.vpc_main_route_table_id 
 
+  provider = aws.east-1
+
   # CIDR block / IP range for VPC 2.
   destination_cidr_block = module.vpc-east-2.vpc_cidr_block
 
@@ -43,6 +47,8 @@ resource "aws_route" "primary2secondary" {
 resource "aws_route" "secondary2primary" {
   # ID of VPC 2 main route table.
   route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+
+  provider = aws.east-2
 
   # CIDR block / IP range for VPC 2.
   destination_cidr_block = module.vpc-east-1.vpc_cidr_block

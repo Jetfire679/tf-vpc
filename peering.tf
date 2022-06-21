@@ -7,7 +7,6 @@ data "aws_ssm_parameter" "rlv-VpcId-east1" {
 
 data "aws_ssm_parameter" "rlv-VpcId-east2" {
   name = "rlv-VpcId"
-  region = "us-east-2"
   provider = aws.east-2
 }
 

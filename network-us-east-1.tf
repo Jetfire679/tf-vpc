@@ -50,7 +50,7 @@ resource "aws_ssm_parameter" "public_subnet_id_b-east-1" {
   value = module.vpc.public_subnets[1]
 }
 
-resource "aws_ssm_parameter" "public_subnet_id_c-east-1 {
+resource "aws_ssm_parameter" "public_subnet_id_c-east-1" {
   name  = join("-", [var.vApp, "PubSubC_ID"])
   type  = "String"
   value = module.vpc.public_subnets[2]

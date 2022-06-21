@@ -1,11 +1,14 @@
 provider "aws" {
   version = "~> 1.0.0"
   region  = "us-east-2"
+  alias = "east-2"
 }
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-
+  providers = {
+    aws = aws.east-2
+   }
   name = join("-", [var.vApp,"vpc"])
   cidr = "10.0.0.0/16"
 

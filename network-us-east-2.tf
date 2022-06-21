@@ -9,7 +9,7 @@ module "vpc" {
   providers = {
     aws = aws.east-2
    }
-  name = join("-", [var.vApp,"vpc-east-1"])
+  name = join("-", [var.vApp,"vpc-east-2"])
   cidr = "10.0.0.0/16"
 
 

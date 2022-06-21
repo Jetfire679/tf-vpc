@@ -1,22 +1,10 @@
-
-
-data "aws_ssm_parameter" "rlv-VpcId-east1" {
-  name = "rlv-VpcId"
-  provider = aws.east-1
-}
-
-data "aws_ssm_parameter" "rlv-VpcId-east2" {
-  name = "rlv-VpcId"
-  provider = aws.east-2
-}
-
 data "aws_caller_identity" "current" {}
 
 resource "aws_vpc_peering_connection" "primary2secondary" {
   # Main VPC ID.
-  vpc_id = data.aws_ssm_parameter.rlv-VpcId-east2.value
+  vpc_id = module.vpc-east-2.vpc_id
 
-  provider = aws.east-1
+  provider = aws.east-2
 
   # AWS Account ID. This can be dynamically queried using the
   # aws_caller_identity data resource.
@@ -24,7 +12,7 @@ resource "aws_vpc_peering_connection" "primary2secondary" {
   peer_owner_id = data.aws_caller_identity.current.account_id
 
   # Secondary VPC ID.
-  peer_vpc_id = data.aws_ssm_parameter.rlv-VpcId-east1.value
+  peer_vpc_id = module.vpc-east-1.vpc_id
 
   # Flags that the peering connection should be automatically confirmed. This
   # only works if both VPCs are owned by the same account.

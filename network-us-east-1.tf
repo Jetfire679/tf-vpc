@@ -8,7 +8,6 @@ module "vpc" {
 
   name = join("-", [var.vApp,"vpc"])
   cidr = "10.1.0.0/16"
-  region
 
 
 

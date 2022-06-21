@@ -40,41 +40,41 @@ data "aws_availability_zones" "azs-east-1" {
 resource "aws_ssm_parameter" "public_subnet_id_a-east-1" {
   name  = join("-", [var.vApp, "PubSubA_ID"])
   type  = "String"
-  value = module.vpc.public_subnets[0]
+  value = module.vpc-east-1.public_subnets[0]
 }
 
 resource "aws_ssm_parameter" "public_subnet_id_b-east-1" {
   name  = join("-", [var.vApp, "PubSubB_ID"])
   type  = "String"
-  value = module.vpc.public_subnets[1]
+  value = module.vpc-east-1.public_subnets[1]
 }
 
 resource "aws_ssm_parameter" "public_subnet_id_c-east-1" {
   name  = join("-", [var.vApp, "PubSubC_ID"])
   type  = "String"
-  value = module.vpc.public_subnets[2]
+  value = module.vpc-east-1.public_subnets[2]
 }
 
 resource "aws_ssm_parameter" "public_subnet_a-east-1" {
   name  = join("-", [var.vApp, "PubSubA"])
   type  = "String"
-  value = module.vpc.public_subnets_cidr_blocks[0]
+  value = module.vpc-east-1.public_subnets_cidr_blocks[0]
 }
 
 resource "aws_ssm_parameter" "public_subnet_b-east-1" {
   name  = join("-", [var.vApp, "PubSubB"])
   type  = "String"
-  value = module.vpc.public_subnets_cidr_blocks[1]
+  value = module.vpc-east-1.public_subnets_cidr_blocks[1]
 }
 
 resource "aws_ssm_parameter" "public_subnet_c-east-1" {
   name  = join("-", [var.vApp, "PubSubC"])
   type  = "String"
-  value = module.vpc.public_subnets_cidr_blocks[2]
+  value = module.vpc-east-1.public_subnets_cidr_blocks[2]
 }
 
 resource "aws_ssm_parameter" "vpc_id-east-1" {
   name  = join("-", [var.vApp, "VpcId"])
   type  = "String"
-  value = module.vpc.vpc_id
+  value = module.vpc-east-1.vpc_id
 }

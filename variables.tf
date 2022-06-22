@@ -22,7 +22,7 @@ variable "availability_zones" {
 variable "requestor_vpc_cidr" {
   type        = string
   description = "Requestor VPC CIDR"
-  default = module.vpc-east-2.vpc_cidr_block.
+  default = module.vpc-east-2.vpc_cidr_block
 }
 
 variable "acceptor_vpc_cidr" {

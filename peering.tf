@@ -17,12 +17,20 @@ resource "aws_vpc_peering_connection" "requester" {
   # Flags that the peering connection should be automatically confirmed. This
   # only works if both VPCs are owned by the same account.
   auto_accept = false
+  
+  depends_on = [
+    modules.vpc-east-2
+  ]  
 }
 
 resource "aws_vpc_peering_connection_accepter" "accepter" {
     provider = aws.east-1
     vpc_peering_connection_id = "${aws_vpc_peering_connection.requester.id}"
     auto_accept = true
+  
+  depends_on = [
+    modules.vpc-east-1
+  ]      
 }
 
 

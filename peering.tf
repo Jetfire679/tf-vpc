@@ -2,6 +2,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_vpc_peering_connection" "requester" {
   provider = aws.east-2
+  
   # Main VPC ID.
   vpc_id = module.vpc-east-2.vpc_id
   

@@ -1,3 +1,24 @@
+variable "region" {
+  type        = string
+  description = "AWS Region"
+}
+
+variable "availability_zones" {
+  type        = list(string)
+  description = "List of availability zones"
+  default = ["us-east-2a", "us-east-2b"]
+}
+
+variable "requestor_vpc_cidr" {
+  type        = string
+  description = "Requestor VPC CIDR"
+}
+
+variable "acceptor_vpc_cidr" {
+  type        = string
+  description = "Acceptor VPC CIDR"
+}
+
 module "requestor_vpc" {
   source     = "cloudposse/vpc/aws"
   version    = "0.18.1"

@@ -1,8 +1,3 @@
-provider "aws" {
-  region  = "us-east-2"
-  alias = "east-2"
-}
-
 module "vpc-east-2" {
   source = "terraform-aws-modules/vpc/aws"
   providers = {

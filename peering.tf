@@ -19,7 +19,7 @@ resource "aws_vpc_peering_connection" "requester" {
   auto_accept = false
   
   depends_on = [
-    modules.vpc-east-2
+    module.vpc-east-2
   ]  
 }
 
@@ -29,7 +29,7 @@ resource "aws_vpc_peering_connection_accepter" "accepter" {
     auto_accept = true
   
   depends_on = [
-    modules.vpc-east-1
+    module.vpc-east-1
   ]      
 }
 

@@ -1,8 +1,8 @@
 module "vpc-east-1" {
   source = "terraform-aws-modules/vpc/aws"
-  # providers = {
-  #   aws = aws.east-1
-  #  }
+  providers = {
+    aws = aws.east-1
+   }
 
   name = join("-", [var.vApp,"vpc-east-1"])
   cidr = "10.1.0.0/16"

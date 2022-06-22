@@ -1,5 +1,6 @@
 module "vpc-east-1" {
   source = "terraform-aws-modules/vpc/aws"
+  
   providers = {
     aws = aws.east-1
    }

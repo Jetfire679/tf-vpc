@@ -37,7 +37,8 @@ resource "aws_vpc_peering_connection_accepter" "accepter" {
 
 resource "aws_route" "secondary2primary" {
   # ID of VPC 1 main route table.
-  route_table_id = module.vpc-east-1.vpc_main_route_table_id 
+  # route_table_id = module.vpc-east-1.vpc_main_route_table_id 
+  route_table_id = module.vpc-east-1.default_route_table_id
 
   provider = aws.east-1
 
@@ -54,7 +55,8 @@ resource "aws_route" "secondary2primary" {
 
 resource "aws_route" "primary2secondary" {
   # ID of VPC 2 main route table.
-  route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+  # route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+  route_table_id = module.vpc-east-2.default_route_table_id
 
   provider = aws.east-2
 

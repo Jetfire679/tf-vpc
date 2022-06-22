@@ -93,7 +93,7 @@ resource "aws_vpc_peering_connection" "us-east-west-peer" {
   peer_vpc_id   = aws_vpc.us-west.id
   vpc_id        = aws_vpc.us-east.id
   peer_owner_id = data.aws_caller_identity.current.account_id
-  peer_region   = "us-west-1"
+  peer_region   = "us-east-1"
   auto_accept   = false
   tags = {
     Name = "us-east-west-peer"
@@ -116,7 +116,7 @@ resource "aws_route_table" "east-rt" {
     gateway_id = aws_internet_gateway.gw-east.id
   }
   route {
-    cidr_block                = "172.16.1.0/24"
+    cidr_block                = "10.1.0.0/16"
     vpc_peering_connection_id = aws_vpc_peering_connection.us-east-west-peer.id
   }
   lifecycle {
@@ -140,7 +140,7 @@ resource "aws_route_table" "west-rt" {
     gateway_id = aws_internet_gateway.gw-west.id
   }
   route {
-    cidr_block                = "10.0.1.0/24"
+    cidr_block                = "10.0.0.0/16"
     vpc_peering_connection_id = aws_vpc_peering_connection.us-east-west-peer.id
   }
   lifecycle {

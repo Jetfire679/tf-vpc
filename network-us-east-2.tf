@@ -12,8 +12,9 @@ module "vpc-east-2" {
 
   azs            = ["us-east-2a", "us-east-2b", "us-east-2c"]
   public_subnets = ["10.0.0.0/24","10.0.1.0/24","10.0.2.0/24"]
-  private_subnets = ["10.0.10.0/24","10.0.20.0/24","10.0.30.0/24"]
 
+# Comment the following 2, to disable private subnets 
+  private_subnets = ["10.0.10.0/24","10.0.20.0/24","10.0.30.0/24"]
   enable_nat_gateway = true
   # enable_vpn_gateway = true
 
@@ -74,6 +75,27 @@ resource "aws_ssm_parameter" "public_subnet_c-east-2" {
   type  = "String"
   value = module.vpc-east-2.public_subnets_cidr_blocks[2]
   provider = aws.east-2
+}
+
+resource "aws_ssm_parameter" "private_subnet_a-east-2" {
+  name  = join("-", [var.vApp, "PriSubA"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets_cidr_blocks[0]
+  provider = aws.east-1
+}
+
+resource "aws_ssm_parameter" "private_subnet_b-east-2" {
+  name  = join("-", [var.vApp, "PriSubB"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets_cidr_blocks[1]
+  provider = aws.east-1
+}
+
+resource "aws_ssm_parameter" "private_subnet_c-east-2" {
+  name  = join("-", [var.vApp, "PriSubC"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets_cidr_blocks[2]
+  provider = aws.east-1
 }
 
 resource "aws_ssm_parameter" "vpc_id-east-2" {

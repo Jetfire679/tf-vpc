@@ -77,24 +77,45 @@ resource "aws_ssm_parameter" "public_subnet_c-east-2" {
   provider = aws.east-2
 }
 
+resource "aws_ssm_parameter" "private_subnet_id_a-east-2" {
+  name  = join("-", [var.vApp, "PriSubA_ID"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets[0]
+  provider = aws.east-2
+}
+
+resource "aws_ssm_parameter" "private_subnet_id_b-east-2" {
+  name  = join("-", [var.vApp, "PriSubB_ID"])
+  type  = "String"
+  value = module.vpc-east-2.private_subnets[1]
+  provider = aws.east-2
+}
+
+resource "aws_ssm_parameter" "private_subnet_id_c-east-2" {
+  name  = join("-", [var.vApp, "PriSubC_ID"])
+  type  = "String"
+  value = module.vpc-east-2.private_subnets[2]
+  provider = aws.east-2
+}
+
 resource "aws_ssm_parameter" "private_subnet_a-east-2" {
   name  = join("-", [var.vApp, "PriSubA"])
   type  = "String"
-  value = module.vpc-east-1.private_subnets_cidr_blocks[0]
+  value = module.vpc-east-2.private_subnets_cidr_blocks[0]
   provider = aws.east-2
 }
 
 resource "aws_ssm_parameter" "private_subnet_b-east-2" {
   name  = join("-", [var.vApp, "PriSubB"])
   type  = "String"
-  value = module.vpc-east-1.private_subnets_cidr_blocks[1]
+  value = module.vpc-east-2.private_subnets_cidr_blocks[1]
   provider = aws.east-2
 }
 
 resource "aws_ssm_parameter" "private_subnet_c-east-2" {
   name  = join("-", [var.vApp, "PriSubC"])
   type  = "String"
-  value = module.vpc-east-1.private_subnets_cidr_blocks[2]
+  value = module.vpc-east-2.private_subnets_cidr_blocks[2]
   provider = aws.east-2
 }
 

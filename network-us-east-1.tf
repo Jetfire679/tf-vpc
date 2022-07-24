@@ -77,6 +77,27 @@ resource "aws_ssm_parameter" "public_subnet_c-east-1" {
   provider = aws.east-1
 }
 
+resource "aws_ssm_parameter" "private_subnet_id_a-east-1" {
+  name  = join("-", [var.vApp, "PriSubA_ID"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets[0]
+  provider = aws.east-1
+}
+
+resource "aws_ssm_parameter" "private_subnet_id_b-east-1" {
+  name  = join("-", [var.vApp, "PriSubB_ID"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets[1]
+  provider = aws.east-1
+}
+
+resource "aws_ssm_parameter" "private_subnet_id_c-east-1" {
+  name  = join("-", [var.vApp, "PriSubC_ID"])
+  type  = "String"
+  value = module.vpc-east-1.private_subnets[2]
+  provider = aws.east-1
+}
+
 resource "aws_ssm_parameter" "private_subnet_a-east-1" {
   name  = join("-", [var.vApp, "PriSubA"])
   type  = "String"

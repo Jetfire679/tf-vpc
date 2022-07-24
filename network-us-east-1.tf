@@ -12,9 +12,9 @@ module "vpc-east-1" {
 
   azs            = ["us-east-1a", "us-east-1b", "us-east-1c"]
   public_subnets = ["10.1.0.0/24","10.1.1.0/24","10.1.2.0/24"]
-  # private_subnets = ["10.0.10.0/24","10.0.20.0/24","10.0.30.0/24"]
+  private_subnets = ["10.1.10.0/24","10.1.20.0/24","10.1.30.0/24"]
 
-  # enable_nat_gateway = true
+  enable_nat_gateway = true
   # enable_vpn_gateway = true
 
   enable_dns_support   = true

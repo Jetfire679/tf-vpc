@@ -27,15 +27,13 @@ module "vpc-east-2" {
   }
 
   private_subnet_tags = {
-    erraform   = "true"
-    Environment = "dev"
-    kubernetes.io/role/elb      = "1"
-    kubernetes.io/cluster/demo  = "owned"
+    "kubernetes.io/role/elb"      = "1"
+    "kubernetes.io/cluster/demo"  = "owned"
   }
 
   public_subnet_tags = {
-    kubernetes.io/role/elb      = "1"
-    kubernetes.io/cluster/demo  = "owned"
+    "kubernetes.io/role/elb"      = "1"
+    "kubernetes.io/cluster/demo"  = "owned"
   }
 
 }

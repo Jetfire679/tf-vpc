@@ -80,7 +80,7 @@ resource "aws_ssm_parameter" "public_subnet_c-east-2" {
 resource "aws_ssm_parameter" "private_subnet_id_a-east-2" {
   name  = join("-", [var.vApp, "PriSubA_ID"])
   type  = "String"
-  value = module.vpc-east-1.private_subnets[0]
+  value = module.vpc-east-2.private_subnets[0]
   provider = aws.east-2
 }
 

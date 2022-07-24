@@ -49,10 +49,6 @@ resource "aws_route" "secondary2primary" {
   vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
 }
 
-
-
-
-
 resource "aws_route" "primary2secondary" {
   # ID of VPC 2 main route table.
   # route_table_id = module.vpc-east-2.vpc_main_route_table_id 
@@ -67,6 +63,11 @@ resource "aws_route" "primary2secondary" {
   # ID of VPC peering connection.
   vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
 }
+
+
+
+
+
 
 resource "aws_route" "secondary2primary-private-subnet1" {
   # ID of VPC 1 main route table.
@@ -109,3 +110,48 @@ resource "aws_route" "secondary2primary-private-subnet3" {
   # ID of VPC peering connection.
   vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
 }  
+
+resource "aws_route" "primary2secondary-private1" {
+  # ID of VPC 2 main route table.
+  # route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+  # route_table_id = module.vpc-east-2.default_route_table_id
+  route_table_id = module.vpc-east-2.private_route_table_ids[0]
+
+  provider = aws.east-2
+
+  # CIDR block / IP range for VPC 2.
+  destination_cidr_block = module.vpc-east-1.vpc_cidr_block
+
+  # ID of VPC peering connection.
+  vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
+}
+
+resource "aws_route" "primary2secondary-private2" {
+  # ID of VPC 2 main route table.
+  # route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+  # route_table_id = module.vpc-east-2.default_route_table_id
+  route_table_id = module.vpc-east-2.private_route_table_ids[1]
+
+  provider = aws.east-2
+
+  # CIDR block / IP range for VPC 2.
+  destination_cidr_block = module.vpc-east-1.vpc_cidr_block
+
+  # ID of VPC peering connection.
+  vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
+}
+
+resource "aws_route" "primary2secondary-private3" {
+  # ID of VPC 2 main route table.
+  # route_table_id = module.vpc-east-2.vpc_main_route_table_id 
+  # route_table_id = module.vpc-east-2.default_route_table_id
+  route_table_id = module.vpc-east-2.private_route_table_ids[2]
+
+  provider = aws.east-2
+
+  # CIDR block / IP range for VPC 2.
+  destination_cidr_block = module.vpc-east-1.vpc_cidr_block
+
+  # ID of VPC peering connection.
+  vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
+}

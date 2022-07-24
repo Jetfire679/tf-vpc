@@ -80,4 +80,3 @@ resource "aws_route" "secondary2primary-private-subnet1" {
 
   # ID of VPC peering connection.
   vpc_peering_connection_id = aws_vpc_peering_connection.requester.id
-}

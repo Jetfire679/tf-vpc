@@ -81,21 +81,21 @@ resource "aws_ssm_parameter" "private_subnet_a-east-2" {
   name  = join("-", [var.vApp, "PriSubA"])
   type  = "String"
   value = module.vpc-east-1.private_subnets_cidr_blocks[0]
-  provider = aws.east-1
+  provider = aws.east-2
 }
 
 resource "aws_ssm_parameter" "private_subnet_b-east-2" {
   name  = join("-", [var.vApp, "PriSubB"])
   type  = "String"
   value = module.vpc-east-1.private_subnets_cidr_blocks[1]
-  provider = aws.east-1
+  provider = aws.east-2
 }
 
 resource "aws_ssm_parameter" "private_subnet_c-east-2" {
   name  = join("-", [var.vApp, "PriSubC"])
   type  = "String"
   value = module.vpc-east-1.private_subnets_cidr_blocks[2]
-  provider = aws.east-1
+  provider = aws.east-2
 }
 
 resource "aws_ssm_parameter" "vpc_id-east-2" {

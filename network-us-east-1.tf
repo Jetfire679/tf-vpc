@@ -26,6 +26,17 @@ module "vpc-east-1" {
     Environment = "dev"
   }
 
+  private_subnet_tags = {
+    "kubernetes.io/role/elb"      = "1"
+    "kubernetes.io/cluster/demo"  = "owned"
+  }
+
+  public_subnet_tags = {
+    "kubernetes.io/role/elb"      = "1"
+    "kubernetes.io/cluster/demo"  = "owned"
+  }
+
+
 }
 
 #Get all available AZ's in VPC for master region

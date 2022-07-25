@@ -15,7 +15,7 @@ module "vpc-east-2" {
 
 # Comment the following 2, to disable private subnets 
   private_subnets = ["10.0.10.0/24","10.0.20.0/24","10.0.30.0/24"]
-  enable_nat_gateway = false
+  enable_nat_gateway = true
   # enable_vpn_gateway = true
 
   enable_dns_support   = true

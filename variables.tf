@@ -5,5 +5,5 @@ variable "aws_region" {
 
 variable "vApp" {
   type    = string
-  default = "rlv"
+  default = "eks"
 }
